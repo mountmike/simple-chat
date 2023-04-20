@@ -1,0 +1,21 @@
+main {
+    display: flex;
+    height: 100vh;
+}
+
+.Aside {
+    width: 30%;
+    background-color: var(--grey);
+}
+
+.ChatBox {
+    width: 70%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* * {
+    border: red 1px solid;
+} */
