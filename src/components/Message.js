@@ -1,6 +1,8 @@
+import "./Message.css"
+
 export default function Message({message}) {
     return (
-        <div>
+        <div className="Message">
             <section className="User">
                 {message.name}
             </section>

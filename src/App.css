@@ -6,6 +6,24 @@
   --grey: #e4e4e4;
 }
 
-.User {
-  font-weight: bold;
+/* * {
+  border: red 1px solid;
+} */
+
+.App {
+  height: 99vh;
+  display: flex;
+  flex-direction: column;
 }
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  height: 10%;
+}
+
+.Main {
+  display: flex;
+  height: 90%;
+}
+
