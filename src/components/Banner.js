@@ -1,3 +1,4 @@
+import './Banner.css'
 import React, { useEffect } from "react";
 import { auth } from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
@@ -17,8 +18,8 @@ export default function Banner() {
  
     
   return (
-    <header>
-        <h1>React Chat</h1>
+    <header className="Header">
+      <h1>simple chat</h1>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out
