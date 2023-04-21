@@ -3,8 +3,21 @@
     margin: 1%;
     padding: 1%;
     border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.User {
+.left {
+    display: flex;
+    flex-direction: column;
+}
+
+.message-name {
     font-weight: bold;
-  }
+}
+
+.time-sent {
+    font-weight: 200;
+    font-size: .7rem;
+}
