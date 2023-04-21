@@ -5,7 +5,7 @@ import Aside from '../components/Aside'
 export default function HomePage() {
 
     return (
-        <main>
+        <main className='Main'>
             <Aside />
             <ChatBox />
         </main>
