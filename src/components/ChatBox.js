@@ -1,13 +1,8 @@
+import './ChatBox.css'
 import Message from '../components/Message'
 import SendMessage from '../components/SendMessage'
 import { useEffect, useRef, useState } from "react";
-import {
-  query,
-  collection,
-  orderBy,
-  onSnapshot,
-  limit,
-} from "firebase/firestore";
+import { query, collection, orderBy, onSnapshot, limit} from "firebase/firestore";
 import { db } from "../firebase";
 
 export default function ChatBox() {
@@ -32,8 +27,8 @@ export default function ChatBox() {
         <section className="ChatBox">
             <div className="messages-wrapper">
             {messages?.map((message) => (
-  <Message key={message.id} message={message} />
-))}
+                <Message key={message.id} message={message} />
+              ))}
             </div>
                 <SendMessage />
         </section>

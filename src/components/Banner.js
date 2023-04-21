@@ -1,4 +1,3 @@
-import './Banner.css'
 import React, { useEffect } from "react";
 import { auth } from "../firebase";
 import { useAuthState } from 'react-firebase-hooks/auth';
