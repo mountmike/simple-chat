@@ -5,3 +5,7 @@
   --dark: #322B2B;
   --grey: #e4e4e4;
 }
+
+.User {
+  font-weight: bold;
+}
