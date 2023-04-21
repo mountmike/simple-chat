@@ -37,6 +37,8 @@
     height: 1rem;
     border-radius: 5px;
     margin: 5% 0;
+    padding: 1%;
+    border: none;
 }
 
 .chat-list {

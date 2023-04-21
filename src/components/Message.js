@@ -1,9 +1,10 @@
 import "./Message.css"
+import { auth } from "../firebase";
 
 export default function Message({message}) {
-    console.log(message);
+    const { uid, displayName, photoURL } = auth.currentUser;
     return (
-        <div className="Message">
+        <div className={message.uid === uid ? "Message message-owner" : "Message"}>
             <section className="left">
                 <span className="message-name">{message.name}</span>
                 <span>{message.text}</span>
