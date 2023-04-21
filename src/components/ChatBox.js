@@ -5,11 +5,11 @@ import { useEffect, useRef, useState } from "react";
 import { query, collection, orderBy, onSnapshot, limit} from "firebase/firestore";
 import { db } from "../firebase";
 
-export default function ChatBox() {
+export default function ChatBox({ chatId }) {
     const [messages, setMessages] = useState([]);
     useEffect(() => {
         const q = query(
-          collection(db, "messages"),
+          collection(db, `/messages/${chatId}/message_list`),
           orderBy("createdAt"),
           limit(50)
         );
@@ -23,14 +23,17 @@ export default function ChatBox() {
         return () => unsubscribe;
       }, []);
     
+      console.log("messages ", messages);
+
     return (
         <section className="ChatBox">
             <div className="messages-wrapper">
+              
             {messages?.map((message) => (
                 <Message key={message.id} message={message} />
               ))}
             </div>
-                <SendMessage />
+                <SendMessage chatId={chatId} />
         </section>
     )
 }

@@ -3,7 +3,7 @@ import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp } from "firebase/firestore";
 import './SendMessage.css'
 
-export default function SendMessage() {
+export default function SendMessage({ chatId }) {
   const [message, setMessage] = useState("")
 
   const sendMessage = async (e) => {
@@ -13,7 +13,7 @@ export default function SendMessage() {
       return
     }
     const { uid, displayName, photoURL } = auth.currentUser;
-    await addDoc(collection(db, "messages"), {
+    await addDoc(collection(db, `/messages/${chatId}/message_list`), {
       text: message,
       name: displayName,
       avatar: photoURL,

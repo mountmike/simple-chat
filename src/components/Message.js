@@ -9,7 +9,7 @@ export default function Message({message}) {
                 <span>{message.text}</span>
             </section>
             <section className="right">
-               <span className="time-sent">{message.createdAt.seconds}</span>
+               <span className="time-sent"></span>
             </section>
         </div>
     )

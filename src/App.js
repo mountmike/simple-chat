@@ -11,7 +11,6 @@ function App() {
   const [user] = useAuthState(auth);
 
   useEffect(() => {
-    console.log(user)
   },[user])
 
   return (
