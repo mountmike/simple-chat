@@ -5,7 +5,7 @@ import { Timestamp } from "firebase/firestore";
 
 export default function Message({message}) {
     const { uid, displayName, photoURL } = auth.currentUser;
-    console.log(message);
+   // console.log(message);
     // console.log(Date(message.createdAt.seconds*1000))
     
     var timeStamp = new Timestamp()
