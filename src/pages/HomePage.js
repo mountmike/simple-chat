@@ -8,7 +8,7 @@ export default function HomePage() {
 
     return (
         <main className='Main'>
-            <Aside />
+            <Aside setChat={setCurrentChatId}/>
             <ChatBox chatId={currentChatId} />
         </main>
     )
