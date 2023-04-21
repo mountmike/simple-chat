@@ -1,7 +1,7 @@
-export default function Message() {
+export default function Message({message}) {
     return (
         <section className="Messages">
-            messages
+            {message.text}
         </section>
     )
 }
