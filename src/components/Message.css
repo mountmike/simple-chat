@@ -1,11 +1,15 @@
 .Message {
-    border: 1px solid black;
     margin: 1%;
     padding: 1%;
     border-radius: 10px;
+    background-color: var(--grey);
+    width: 50%;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+}
+
+.message-owner {
+    background-color: var(--pink);
+    align-self: flex-end;
 }
 
 .left {

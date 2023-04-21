@@ -12,7 +12,7 @@
 } */
 
 .App {
-  height: 99vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
 }
@@ -20,11 +20,27 @@
 .Header {
   display: flex;
   justify-content: space-between;
-  height: 10%;
+  align-items: center;
+  padding: 0 1%;
+  height: 4%;
+  background-color: var(--dark);
+  color: var(--greylight);
+}
+
+.Header > button {
+  color: white;
+  border: white solid 1px;
+  border-radius: 10px;
+  background-color: transparent;
+}
+
+.Header > button:hover {
+  box-shadow: 1px 1px 4px 1px #ffffff;
+  cursor: pointer;
 }
 
 .Main {
   display: flex;
-  height: 90%;
+  max-height: 96%;
 }
 

@@ -18,7 +18,7 @@ export default function Banner() {
     
   return (
     <header className="Header">
-      <h1>simple chat</h1>
+      <p>unsafe chat</p>
       {user ? (
         <button onClick={signOut} className="sign-out" type="button">
           Sign Out
