@@ -6,17 +6,14 @@ import LoginPage from './pages/LoginPage'
 import Banner from './components/Banner'
 import { useEffect, useState } from 'react';
 import { GetUsers ,RegisterUser } from './user';
-import { query, collection, orderBy, onSnapshot, limit} from "firebase/firestore";
-import { db } from './firebase';
 
-let currentUser
+
 
 function App() {
   
   const [ users , setUsers ] = useState()
-  //login user
   const [user] = useAuthState(auth);
-  // data base user  
+  
 
   
   useEffect(()=> {
@@ -31,12 +28,6 @@ function App() {
     }
   
 
-  
-          
-
-
-
-  
   
   return (
     <div className="App">
