@@ -21,12 +21,13 @@ export function GetUsers( setUsers ) {
   
 export async function RegisterUser(){
   console.log('Added user to db');
-  const { uid, displayName, photoURL } = auth.currentUser;
+  const { uid, displayName, photoURL ,email } = auth.currentUser;
       await setDoc(doc(db, `users2`, uid ), {
       name: displayName,
       avatar: photoURL,
-      messages: [],
-      userName: displayName.split(' ')[0]
+      conversations: [],
+      userName: displayName.split(' ')[0],
+      email : email
     });
 }
 
