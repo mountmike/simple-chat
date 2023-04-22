@@ -35,7 +35,7 @@ export default function Aside({ setChatId , users }) {
                 
                 {conversationList?.map((conversationId) => (
                    
-                   <ChatCard key={conversationId} conversation={conversationId} setChatId={ setChatId } />
+                   <ChatCard key={conversationId} conversationId={conversationId} setChatId={ setChatId } />
                 ))}
 
             </section>
