@@ -23,7 +23,7 @@ export default function ChatBox({ chatId }) {
         return () => unsubscribe;
       }, []);
     
-      console.log("messages ", messages);
+      //console.log("messages ", messages);
 
     return (
         <section className="ChatBox">
