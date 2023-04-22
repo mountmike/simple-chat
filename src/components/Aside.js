@@ -8,44 +8,36 @@ import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 
-export default function Aside({ setChatId }) {
+export default function Aside({ setChatId , users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
-    const [conversationList, setConversationList] = useState()
+    const [conversationList, setConversationList] = useState() // list of user conversations id
+    
 
+    
     useEffect(() => {
         const docRef = doc(db, "users2", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 setConversationList(docSnap.data().conversations)
-            } else {
-                console.log("No such document!");
-            }
+            } 
     })
     },[])
 
-    if(conversationList){console.log(conversationList)}
-    
-    
     
     
     return (
         <aside className="Aside">
-            <ProfileHeader setChatId={setChatId} />
+            <ProfileHeader setChatId={setChatId}  users={users}/>
             <section className="search-bar">
                 <input placeholder="Search" type="text" name="" id="" />
             </section>
             <section className="chat-list">
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
+                
+                {conversationList?.map((conversationId) => (
+                   
+                   <ChatCard key={conversationId} conversation={conversationId} setChatId={ setChatId } />
+                ))}
+
             </section>
         </aside>
     )

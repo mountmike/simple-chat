@@ -17,7 +17,6 @@ export function GetUsers( setUsers ) {
   }
 
 
-
   
 export async function RegisterUser(){
   console.log('Added user to db');
@@ -26,9 +25,16 @@ export async function RegisterUser(){
       name: displayName,
       avatar: photoURL,
       conversations: [],
-      userName: displayName.split(' ')[0],
+      userName: displayName.split(' ')[0].charAt(0).toUpperCase() + displayName.split(' ')[0].slice(1) ,
       email : email
     });
+}
+
+
+export function GetUsersConversations(){
+
+
+  
 }
 
 export function updateUser(){
