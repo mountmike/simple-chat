@@ -20,7 +20,7 @@ function App() {
     GetUsers(setUsers)
     },[user])
     
-  if(users){
+  if(user && users){
     if(!users.map(user => (user.id)).includes(user.uid)){
       RegisterUser()
       }
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="App">
       <Banner />
-      {!user ? <LoginPage /> : <HomePage />}
+      {!user ? <LoginPage /> : <HomePage users={users} />}
     </div>
   );
 }

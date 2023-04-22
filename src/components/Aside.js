@@ -8,7 +8,7 @@ import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 
-export default function Aside({ setChatId }) {
+export default function Aside({ setChatId , users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [conversationList, setConversationList] = useState() // list of user conversations id
     
@@ -27,7 +27,7 @@ export default function Aside({ setChatId }) {
     
     return (
         <aside className="Aside">
-            <ProfileHeader setChatId={setChatId} />
+            <ProfileHeader setChatId={setChatId}  users={users}/>
             <section className="search-bar">
                 <input placeholder="Search" type="text" name="" id="" />
             </section>
@@ -35,7 +35,7 @@ export default function Aside({ setChatId }) {
                 
                 {conversationList?.map((conversationId) => (
                    
-                   <ChatCard key={conversationId.id} conversation={conversationId} setChatId={ setChatId } />
+                   <ChatCard key={conversationId} conversation={conversationId} setChatId={ setChatId } />
                 ))}
 
             </section>

@@ -7,16 +7,14 @@ import { useEffect, useState } from 'react'
 
 
 
-export default function HomePage() {
+export default function HomePage({ users }) {
     const [currentChatId, setCurrentChatId] = useState("cgCqNRliXIm500NbswZT")
         
-useEffect(() => {
-    console.log(currentChatId)
-},[currentChatId])
+
 
     return (
         <main className='Main'>
-            <Aside setChatId={ setCurrentChatId }/>
+            <Aside setChatId={ setCurrentChatId } users={ users }/>
             <ChatBox chatId={ currentChatId } />
         </main>
     )

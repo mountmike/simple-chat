@@ -9,7 +9,7 @@ export default function SendMessage({ chatId }) {
   const sendMessage = async (e) => {
     e.preventDefault()
     if (message.trim() === "") {
-      alert("enter valid message")
+      //alert("enter valid message") ---- turned off but doesn't send 
       return
     }
     const { uid, displayName, photoURL } = auth.currentUser;
