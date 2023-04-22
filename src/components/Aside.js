@@ -10,22 +10,19 @@ import { doc, getDoc } from "firebase/firestore";
 
 export default function Aside({ setChatId }) {
     const { uid, displayName, photoURL } = auth.currentUser;
-    const [conversationList, setConversationList] = useState()
+    const [conversationList, setConversationList] = useState() // list of user conversations id
+    
 
+    
     useEffect(() => {
         const docRef = doc(db, "users2", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 setConversationList(docSnap.data().conversations)
-            } else {
-                console.log("No such document!");
-            }
+            } 
     })
     },[])
 
-    if(conversationList){console.log(conversationList)}
-    
-    
     
     
     return (
@@ -35,17 +32,12 @@ export default function Aside({ setChatId }) {
                 <input placeholder="Search" type="text" name="" id="" />
             </section>
             <section className="chat-list">
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
-                <ChatCard />
+                
+                {conversationList?.map((conversationId) => (
+                   
+                   <ChatCard key={conversationId.id} conversation={conversationId} setChatId={ setChatId } />
+                ))}
+
             </section>
         </aside>
     )

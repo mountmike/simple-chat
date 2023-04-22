@@ -24,8 +24,8 @@ function App() {
     if(!users.map(user => (user.id)).includes(user.uid)){
       RegisterUser()
       }
-    
     }
+
   
 
   

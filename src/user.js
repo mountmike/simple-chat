@@ -17,7 +17,6 @@ export function GetUsers( setUsers ) {
   }
 
 
-
   
 export async function RegisterUser(){
   console.log('Added user to db');
@@ -29,6 +28,13 @@ export async function RegisterUser(){
       userName: displayName.split(' ')[0],
       email : email
     });
+}
+
+
+export function GetUsersConversations(){
+
+
+  
 }
 
 export function updateUser(){

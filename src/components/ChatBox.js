@@ -21,7 +21,7 @@ export default function ChatBox({ chatId }) {
           setMessages(messages);
         });
         return () => unsubscribe;
-      }, []);
+      }, [chatId]);
     
       //console.log("messages ", messages);
 
