@@ -4,8 +4,8 @@ import { auth, db } from "../firebase";
 export async function createNewChat(recipientId) {
     const { uid, displayName } = auth.currentUser
     let recipientName, senderName;
-    const recipientRef = doc(db, "users2", recipientId);
-    const senderRef = doc(db, "users2", uid);
+    const recipientRef = doc(db, "users", recipientId);
+    const senderRef = doc(db, "users", uid);
 
     await getDoc(recipientRef).then(docSnap => {
         if (docSnap.exists()) {
@@ -27,8 +27,8 @@ export async function createNewChat(recipientId) {
         members: [senderName, recipientName]
       });  
 
-    const userConversations = await doc(db, `users2`, uid)
-    const recipientConversations = await doc(db, `users2`, recipientId)
+    const userConversations = await doc(db, `users`, uid)
+    const recipientConversations = await doc(db, `users`, recipientId)
     await updateDoc(userConversations, {
         conversations: arrayUnion(docRef.id)
     })

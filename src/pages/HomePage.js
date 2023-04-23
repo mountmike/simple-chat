@@ -5,10 +5,8 @@ import { useEffect, useState } from 'react'
 
 
 
-
-
 export default function HomePage({ users }) {
-    const [currentChatId, setCurrentChatId] = useState("cgCqNRliXIm500NbswZT")
+    const [currentChatId, setCurrentChatId] = useState("theMegaChat")
         
 
 

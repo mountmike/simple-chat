@@ -4,7 +4,7 @@ import { auth, db } from "./firebase";
 
 export function GetUsers( setUsers ) {
     const q = query(
-      collection(db, `/users2`),
+      collection(db, `/users`),
     );
     const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
       let users = [];
@@ -21,10 +21,10 @@ export function GetUsers( setUsers ) {
 export async function RegisterUser(){
   console.log('Added user to db');
   const { uid, displayName, photoURL ,email } = auth.currentUser;
-      await setDoc(doc(db, `users2`, uid ), {
+      await setDoc(doc(db, `users`, uid ), {
       name: displayName,
       avatar: photoURL,
-      conversations: [],
+      conversations: ["theMegaChat"],
       userName: displayName.split(' ')[0].charAt(0).toUpperCase() + displayName.split(' ')[0].slice(1) ,
       email : email
     });

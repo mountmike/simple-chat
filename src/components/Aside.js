@@ -17,7 +17,7 @@ export default function Aside({ setChatId , users }) {
 
     
     useEffect(() => {
-        const docRef = doc(db, "users2", uid );
+        const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
                 setConversationList(docSnap.data().conversations)
