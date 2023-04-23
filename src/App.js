@@ -32,7 +32,7 @@ function App() {
   
   return (
     <div className="App">
-      <Banner />
+      <Banner user={user}/>
       {!user ? <LoginPage /> : <HomePage users={users} />}
     </div>
   );
