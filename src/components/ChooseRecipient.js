@@ -4,15 +4,17 @@ import { createNewChat } from "../utils/utils";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
-export function ChooseRecipient({ setIsNewChat, setNewChatTrackker }){
+export function ChooseRecipient({ setIsNewChat, setNewChatTrackker ,setUpdateConvoList }){
     const { uid  } = auth.currentUser;
     const [recipientId, setRecipientId] = useState("")
 
     const handleSubmit = e => {
         e.preventDefault()
-        createNewChat(recipientId)
+        createNewChat(recipientId).then(res => setUpdateConvoList( prev => !prev))
+        
         setRecipientId("")
         setIsNewChat(false)
+        
     }
 
     return (

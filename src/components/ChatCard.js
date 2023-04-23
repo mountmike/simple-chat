@@ -3,7 +3,7 @@ import { db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth } from "../firebase";
 
-export default function ChatCard({ conversation, setChatId, setConversationList , uid , conversationId ,conversationList , setConvoList}) {
+export default function ChatCard({ conversation, setChatId, setConversationList , uid , conversationId ,conversationList , setUpdateConvoList}) {
     const currentName = auth.currentUser.displayName.split(" ")[0]
 
     const conversationName = () => { 
@@ -46,9 +46,7 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
         };
 
         updateDoc(docRef, data)
-        .then(docRef => {
-            console.log("A New Document Field has been added to an existing document");
-        })
+        setUpdateConvoList( prev => !prev)
     }
 
     
