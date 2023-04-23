@@ -8,11 +8,11 @@ export default function Banner() {
     const googleSignIn = () => {
         const provider = new GoogleAuthProvider();
         signInWithRedirect(auth, provider);
-      };
+    };
 
     const signOut = () => {
-    auth.signOut();
-  };
+      
+    };
 
  
     
