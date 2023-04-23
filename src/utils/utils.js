@@ -1,7 +1,7 @@
 import { collection, doc, addDoc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
-export async function creatNewChat(recipientId) {
+export async function createNewChat(recipientId) {
     const { uid, displayName } = auth.currentUser
     let recipientName, senderName;
     const recipientRef = doc(db, "users2", recipientId);

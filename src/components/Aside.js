@@ -9,6 +9,7 @@ import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
 
 
+
 export default function Aside({ setChatId , users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [conversationList, setConversationList] = useState() // list of user conversations id
@@ -22,19 +23,16 @@ export default function Aside({ setChatId , users }) {
                 setConversationList(docSnap.data().conversations)
             } 
     })
-    },[])
+    },[conversationList])
 
-    
+
     
     return (
         <aside className="Aside">
             <ProfileHeader setChatId={setChatId}  users={users} setIsNewChat={setIsNewChat}/>
 
-           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} />}
+           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} setConversationList={setConversationList} />}
 
-            {/* <section className="search-bar">
-                <input placeholder="enter recipient's user id" type="text" name="" id="" />
-            </section> */}
             <section className="chat-list">
                 
                 {conversationList?.map((conversationId) => (

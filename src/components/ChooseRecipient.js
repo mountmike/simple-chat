@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { auth } from "../firebase";
-import { creatNewChat } from "../utils/utils";
+import { createNewChat } from "../utils/utils";
 
-export function ChooseRecipient({ setIsNewChat }){
+export function ChooseRecipient({ setIsNewChat, setConversationList }){
     const { uid  } = auth.currentUser;
     const [recipientId, setRecipientId] = useState("")
 
     const handleSubmit = e => {
         e.preventDefault()
-        creatNewChat(recipientId)
+        createNewChat(recipientId)
         setRecipientId("")
         setIsNewChat(false)
-        
+        setConversationList([])
     }
 
     return (
