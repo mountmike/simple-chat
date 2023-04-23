@@ -22,25 +22,36 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 1%;
-  height: 4%;
+  height: 7%;
   background-color: var(--dark);
   color: var(--greylight);
 }
 
-.Header > button {
+.header-buttons > button {
   color: white;
   border: white solid 1px;
   border-radius: 10px;
   background-color: transparent;
+  margin: 0 5px;
 }
 
-.Header > button:hover {
+.header-buttons > button:hover {
   box-shadow: 1px 1px 4px 1px #ffffff;
   cursor: pointer;
 }
 
 .Main {
   display: flex;
-  height: 96%;
+  height: 94%;
+}
+
+.tagline {
+  font-size: .8rem;
+  font-weight: 300;
+  margin: 0;
+}
+
+.heading {
+  margin: 0;
 }
 

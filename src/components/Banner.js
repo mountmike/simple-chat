@@ -18,11 +18,17 @@ export default function Banner() {
     
   return (
     <header className="Header">
-      <p>unsafe chat</p>
+      <div className="wrapper">
+        <h3 className="heading">unsafe chat</h3>
+        <p className="tagline">a chat client with zero end to end encryption powered by a few GA students</p>
+      </div>
       {user ? (
-        <button onClick={signOut} className="sign-out" type="button">
-          Sign Out
-        </button>
+        <div className="header-buttons">
+          <button onClick={() => {navigator.clipboard.writeText(auth.currentUser.uid)}}>Copy User ID</button>
+          <button onClick={signOut} className="sign-out" type="button">
+            Sign Out
+          </button>
+        </div>
       ) : (
         <button onClick={googleSignIn} className="sign-in">Sign In</button>
       )}
