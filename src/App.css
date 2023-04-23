@@ -22,7 +22,6 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 1%;
-  height: 7%;
   background-color: var(--dark);
   color: var(--greylight);
 }
@@ -48,7 +47,7 @@
 .tagline {
   font-size: .8rem;
   font-weight: 300;
-  margin: 0;
+  margin: 0 0 5px 0;
 }
 
 .heading {
