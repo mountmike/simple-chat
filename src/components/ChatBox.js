@@ -40,7 +40,7 @@ export default function ChatBox({ chatId }) {
             
             }
 
-              <span ref={scollToRef}></span>      
+              <span ref={scollToRef}>test position</span>  {/* -- if we can get this element to position below the most recent most it will scroll to the new message remove content when achieved ---*/ }    
           </div>
            
               <SendMessage scollToRef={scollToRef} chatId={chatId} />
