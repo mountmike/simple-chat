@@ -10,8 +10,8 @@ export function ChooseRecipient({ setIsNewChat, setNewChatTrackker ,setUpdateCon
 
     const handleSubmit = e => {
         e.preventDefault()
-        createNewChat(recipientId)
-        setUpdateConvoList( prev => !prev)
+        createNewChat(recipientId).then(res => setUpdateConvoList( prev => !prev))
+        
         setRecipientId("")
         setIsNewChat(false)
         

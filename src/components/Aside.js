@@ -31,8 +31,6 @@ export default function Aside({ setChatId , users }) {
         })
     },[updateConvoList])
 
-      
-
 
     
     return (
