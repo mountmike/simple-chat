@@ -8,3 +8,7 @@
     border-width: 0 0 2px 0;
     border-style: solid;
 }
+
+.Message-header > .chat-img {
+    margin: 1%;
+}

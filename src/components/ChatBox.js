@@ -12,7 +12,7 @@ export default function ChatBox({ chatId }) {
     useEffect(() => {
         const q = query(
           collection(db, `/messages/${chatId}/message_list`),
-          orderBy("createdAt"),
+          orderBy("createdAt", "desc"),
           limit(50)
         );
         const unsubscribe = onSnapshot(q, (QuerySnapshot) => {
@@ -29,7 +29,7 @@ export default function ChatBox({ chatId }) {
 
     return (
         <section className="ChatBox">
-          <MessageHeader />
+          <MessageHeader chatId={chatId} />
           <div className="messages-wrapper">
             
           {messages?.map((message) => (
