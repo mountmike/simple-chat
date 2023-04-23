@@ -47,8 +47,14 @@
     width: 90%;
     height: 100%;
     overflow-y: scroll;
+    scrollbar-width: none;  
     gap: 10px;
 }
+
+.chat-list::-webkit-scrollbar {
+    display: none;
+  }
+  
 
 .chat-wrapper {
     display: flex;

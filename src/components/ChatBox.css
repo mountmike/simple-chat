@@ -3,3 +3,7 @@
     display: flex;
     flex-direction: column;
 }
+
+.messages-wrapper::-webkit-scrollbar {
+    display: none;
+  }

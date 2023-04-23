@@ -19,6 +19,7 @@
 .env.production.local
 .env
 .firebase.js
+.amal.env
 
 npm-debug.log*
 yarn-debug.log*
