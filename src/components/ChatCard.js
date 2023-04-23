@@ -2,6 +2,8 @@ import { useEffect, useState } from "react"
 import { db } from "../firebase";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth } from "../firebase";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function ChatCard({ conversation, setChatId, setConversationList, users , uid , conversationId ,conversationList , setUpdateConvoList}) {
     const currentName = auth.currentUser.displayName.split(" ")[0]
@@ -65,16 +67,22 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
 
     return (
         <article className={conversation.isActive ? "chat-wrapper active" : "chat-wrapper"} onClick={handleClick}>
-            <img className="chat-img" src={chat && conversationAvatar()} alt="" />
-            <div className="message-preview-wrapper">
-                <h5 className="display-name">
-                    {chat ? conversationName() : "" }
-                </h5>
-                <span className="message-preview">{chat ? chat.last_message : "" }</span>
+            <div className="card-left-wrapper">
+                <img className="chat-img" src={chat && conversationAvatar()} alt="" />
+                <div className="message-preview-wrapper">
+                    <h5 className="display-name">
+                        {chat ? conversationName() : "" }
+                    </h5>
+                    <span className="message-preview">{chat ? chat.last_message : "" }</span>
+                </div>
             </div>
-            <div className="time-received-wrapper">
-                <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" } </time>
-                <button className="delete-btn" onClick={deleteChat}>Delete Chat</button>
+            <div className="card-right-wrapper">
+                <button id="deleteChatBtn" onClick={deleteChat}>
+                        <FontAwesomeIcon icon={faXmark} />
+                </button>
+                <div className="time-received-wrapper">
+                    <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" } </time>
+                </div>
             </div>
         </article>
     )
