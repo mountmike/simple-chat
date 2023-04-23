@@ -5,7 +5,7 @@ import './SendMessage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
-export default function SendMessage({ chatId }) {
+export default function SendMessage({ chatId , scollToRef  }) {
   const [message, setMessage] = useState("")
 
   const sendMessage = async (e) => {
@@ -18,17 +18,17 @@ export default function SendMessage({ chatId }) {
       createdAt: serverTimestamp(),
       uid,
     });
-    setMessage("");
+    
 
     const messageRef = doc(db, "messages", chatId);
     await updateDoc(messageRef, {
       last_message: message.slice(0, 20) + "..."
     });
-  
-
+    setMessage("");
+    scollToRef.current.scrollIntoView()
     
   }
-
+  
   return (
       <form onSubmit={(e) => sendMessage(e)} className="SendMessage">
         <label htmlFor="messageInput" hidden>

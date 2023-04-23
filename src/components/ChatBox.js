@@ -8,7 +8,8 @@ import { db } from "../firebase";
 
 export default function ChatBox({ chatId }) {
     const [messages, setMessages] = useState([]);
-    
+    const scollToRef = useRef()
+
     useEffect(() => {
         const q = query(
           collection(db, `/messages/${chatId}/message_list`),
@@ -26,7 +27,7 @@ export default function ChatBox({ chatId }) {
       }, [chatId]);
     
       //console.log("messages ", messages);
-
+      messages.reverse()
     return (
         <section className="ChatBox">
           <MessageHeader chatId={chatId} />
@@ -34,9 +35,16 @@ export default function ChatBox({ chatId }) {
             
           {messages?.map((message) => (
               <Message chatId={chatId} key={message.id} message={message} />
-            ))}
+              
+            ))
+            
+            }
+
+              <span ref={scollToRef}></span>
           </div>
-              <SendMessage chatId={chatId} />
+           
+              <SendMessage scollToRef={scollToRef} chatId={chatId} />
+                      
         </section>
     )
 }
