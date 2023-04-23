@@ -2,6 +2,7 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { creatNewChat } from '../utils/utils'
 import { ChooseRecipient } from "./ChooseRecipient";
+import { TestDelete } from "../TestDbCalls";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePen } from '@fortawesome/free-solid-svg-icons'
@@ -10,7 +11,7 @@ export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [chooseRecipient , setChooseRecipient ] = useState(false)
     
-
+     
     const handleNewChat = (e) => {
         setIsNewChat(true)
         // const simonUserId = "XHukCG7e6XPSVmmhvq2T4h47giy1"
@@ -29,6 +30,6 @@ export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
         
                 
                 {/* {chooseRecipient?<ChooseRecipient users={users}/>:<button onClick={handleNewChat}>new chat</button>} */}
-            </header>
+        </header>
     )
 }
