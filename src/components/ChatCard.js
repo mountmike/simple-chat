@@ -20,17 +20,6 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
         }
     }
 
-    const conversationAvatar = () => {
-        const chatMembers = users.filter(user => user.conversations.includes(conversation.id))
-        const recipientUser = chatMembers.filter(index => index.id !== auth.currentUser.uid)[0]
-        if (conversation.id === "theMegaChat") {
-            return "/DALLE_avatar.png"
-        } else if (recipientUser) {
-            return recipientUser.avatar
-        } else {
-            return "https://placehold.co/400x400"
-        }
-    }
 
     const conversationName = () => { 
         return chat.chat_name ? chat.chat_name : chat.members.filter(name => name !== currentName) 
