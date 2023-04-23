@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Message.css"
-import { auth } from "../firebase";
-import { Timestamp } from "firebase/firestore";
+import { auth, db } from "../firebase";
+import { Timestamp, deleteDoc, deleteField, doc, updateDoc } from "firebase/firestore";
 
-export default function Message({ message }) {
+export default function Message({ message, chatId }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     
     
@@ -28,6 +28,13 @@ export default function Message({ message }) {
         }
     }
 
+    // const messageRef = doc(db, `/messages/${chatId}/message_list`, )
+
+    const deleteMessage = async (e) => {
+        console.log(message)
+        // await deleteDoc(doc(db, `/messages/${chatId}/message_list/${message}`, message.text == e.target.value))
+    }
+
     
     
     return (
@@ -38,6 +45,9 @@ export default function Message({ message }) {
             </section>
             <section className="right">
                <time className="time-sent">{date}</time>
+            </section>
+            <section>
+                <button onClick={deleteMessage} className="delete-btn" value={message.text}>Delete Message</button>
             </section>
         </div>
     )

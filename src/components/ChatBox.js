@@ -33,7 +33,7 @@ export default function ChatBox({ chatId }) {
           <div className="messages-wrapper">
             
           {messages?.map((message) => (
-              <Message key={message.id} message={message} />
+              <Message chatId={chatId} key={message.id} message={message} />
             ))}
           </div>
               <SendMessage chatId={chatId} />

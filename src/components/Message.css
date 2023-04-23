@@ -25,3 +25,9 @@
     font-weight: 200;
     font-size: .7rem;
 }
+
+.delete-btn {
+    padding: 5px;
+    border: none;
+    background: none;
+}
