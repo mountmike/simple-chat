@@ -20,7 +20,7 @@ export default function Aside({ setChatId , users }) {
         const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-                const conversationList = docSnap.data().conversations
+                const conversationList = docSnap.get("conversations")
                     .map((convo, index) => {
                         let obj = {}
                         obj.id = convo
@@ -30,6 +30,7 @@ export default function Aside({ setChatId , users }) {
             setConversationList(conversationList.reverse())}
         })
     },[updateConvoList])
+
 
 
     
