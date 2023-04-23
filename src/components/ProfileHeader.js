@@ -8,7 +8,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquarePen } from '@fortawesome/free-solid-svg-icons'
 
 export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
-    const { uid, displayName, photoURL } = auth.currentUser;
+    const { email, uid, displayName, photoURL } = auth.currentUser;
     const [chooseRecipient , setChooseRecipient ] = useState(false)
     
      
@@ -18,11 +18,12 @@ export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
         // setChooseRecipient(true)
         //creatNewChat(simonUserId)
     }
-
+    const userInfo = (users?.filter(user => email === user.email)[0])
+    
     return (
         <header>
                 <section className="currentUser">
-                    <img className="display-img" src={photoURL} alt="" />
+                    <img className="display-img" src={userInfo?.avatar} alt="" />
                     <h4 className="display-name">{displayName}</h4>
                 </section>
             

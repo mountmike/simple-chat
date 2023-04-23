@@ -1,7 +1,7 @@
 .messages-wrapper {
     overflow-y: scroll;
     display: flex;
-    flex-direction: column-reverse;
+    flex-direction: column;
 }
 
 .messages-wrapper::-webkit-scrollbar {

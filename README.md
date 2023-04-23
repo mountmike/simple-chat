@@ -79,6 +79,7 @@ The inital version of the app created a single group chat that anyone could join
 4. Add to UI a feature that clicking on a <ChatCard> sets the currentChatId to the target.value and then the <ChatBox> should re-render with that convo
 5. Create function for "new chat" button that pushes a new chatID to the db > users > [conversations] and sets currentChatId to that value.
 
+  
 ## Additional features were then added:
 - Ability to delete messages once they are sent.
 - Ability to delete conversations once they are created.
@@ -94,3 +95,4 @@ The inital version of the app created a single group chat that anyone could join
 - Add notifications type functionality to make it clear when a new message is recieved.
 - managing contacts/friends list
 - sending images/emojis
+
