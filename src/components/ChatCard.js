@@ -24,9 +24,16 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
     const handleClick = (e) => {
         setChatId(conversation.id)
         setConversationList(prevList => {
-            prevList.map(item => {
-                item.id === conversation.id ? item.isActive = true : item.isActive = false
+            let newArr = [...prevList].map(item => {
+                if (item.id === conversation.id) {
+                    return { id: item.id, isActive: true}
+                } else {
+                    return { id: item.id, isActive: false}
+                }
+              
             })
+            console.log(newArr);
+            return newArr
         })
 
     }
