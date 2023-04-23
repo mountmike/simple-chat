@@ -26,7 +26,7 @@ export default function SendMessage({ chatId , scollToRef  }) {
     });
     setMessage("");
     scollToRef.current.scrollIntoView()
-    //scroll.current.scrollIntoView({ behavior: "smooth" });    
+    
   }
   
   return (

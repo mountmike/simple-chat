@@ -19,3 +19,12 @@ A simple chat application made using React and Firebase, future details will be 
 3. Then, in <Aside> make a db call with the list of conversation IDs and store an array of objects in a state that contains the metainfo for each convo
 4. Add to UI a feature that clicking on a <ChatCard> sets the currentChatId to the target.value and then the <ChatBox> should re-render with that convo
 5. Create function for "new chat" button that pushes a new chatID to the db > users > [conversations] and sets currentChatId to that value.
+
+# Coming Features
+
+- notiforcations
+- order aside by most recent message 
+- ability to group chat
+- edit profile
+
+

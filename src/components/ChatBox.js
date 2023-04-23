@@ -27,7 +27,7 @@ export default function ChatBox({ chatId }) {
       }, [chatId]);
     
       //console.log("messages ", messages);
-      // messages.reverse()
+      messages.reverse()
     return (
         <section className="ChatBox">
           <MessageHeader chatId={chatId} />
@@ -40,7 +40,7 @@ export default function ChatBox({ chatId }) {
             
             }
 
-              <span ref={scollToRef}>test position</span>  {/* -- if we can get this element to position below the most recent most it will scroll to the new message remove content when achieved ---*/ }    
+              <span ref={scollToRef}></span>
           </div>
            
               <SendMessage scollToRef={scollToRef} chatId={chatId} />
