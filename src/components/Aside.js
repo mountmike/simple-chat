@@ -14,7 +14,7 @@ export default function Aside({ setChatId , users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [conversationList, setConversationList] = useState([]) // list of user conversations id
     const [isNewChat, setIsNewChat] = useState(false) // for toggling the conditional rendering of the new chat ID input
-
+    const [updateConvoList , setUpdateConvoList] = useState(false)
     
     useEffect(() => {
         const docRef = doc(db, "users", uid );
@@ -27,9 +27,11 @@ export default function Aside({ setChatId , users }) {
                         index === 0 ? obj.isActive = true : obj.isActive = false
                         return obj
                     })
-            setConversationList(conversationList)}
+            setConversationList(conversationList.reverse())}
         })
-    },[])
+    },[updateConvoList])
+
+      
 
 
     
@@ -37,7 +39,7 @@ export default function Aside({ setChatId , users }) {
         <aside className="Aside">
             <ProfileHeader setChatId={setChatId}  users={users} setIsNewChat={setIsNewChat}/>
 
-           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} />}
+           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} setUpdateConvoList={setUpdateConvoList}/>}
 
             <section className="chat-list">
                 
@@ -51,7 +53,7 @@ export default function Aside({ setChatId , users }) {
                    conversationId={conversation.id}
                    uid={uid}
                    conversationList={conversationList}
-                   setConvoList={setConversationList}
+                   setUpdateConvoList={setUpdateConvoList}
                    />
                 ))}
 

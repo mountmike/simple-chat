@@ -13,7 +13,7 @@ export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
     
      
     const handleNewChat = (e) => {
-        setIsNewChat(true)
+        setIsNewChat(prev => !prev)
         // const simonUserId = "XHukCG7e6XPSVmmhvq2T4h47giy1"
         // setChooseRecipient(true)
         //creatNewChat(simonUserId)
