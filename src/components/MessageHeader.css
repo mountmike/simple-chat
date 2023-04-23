@@ -1,0 +1,10 @@
+.Message-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 4rem;
+    width: 100%;
+    border-color: var(--grey);
+    border-width: 0 0 2px 0;
+    border-style: solid;
+}

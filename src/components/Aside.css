@@ -45,6 +45,7 @@
     display: flex;
     flex-direction: column;
     width: 90%;
+    height: 100%;
     overflow-y: scroll;
     gap: 10px;
 }
@@ -75,4 +76,23 @@
 
 .message-preview {
     font-weight: 200;
+}
+
+.ChooseRecipient {
+    margin-bottom: 2rem;
+    width: 90%;
+}
+
+.ChooseRecipient > form {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    gap: 5px;
+}
+
+#enterRecipient {
+    width: 80%;
+    border-radius: 5px;
+    border: none;
+    padding: 1%;
 }

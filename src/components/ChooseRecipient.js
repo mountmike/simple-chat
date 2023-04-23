@@ -1,21 +1,31 @@
+import { useState } from "react";
 import { auth } from "../firebase";
-import { creatNewChat } from "../utils/utils";
+import { createNewChat } from "../utils/utils";
 
-export function ChooseRecipient( users ){
+export function ChooseRecipient({ setIsNewChat, setConversationList }){
     const { uid  } = auth.currentUser;
+    const [recipientId, setRecipientId] = useState("")
 
-    const handleChange = e => {
-        console.log(e.target.value)
-        creatNewChat(e.target.value)
-        
+    const handleSubmit = e => {
+        e.preventDefault()
+        createNewChat(recipientId)
+        setRecipientId("")
+        setIsNewChat(false)
+        setConversationList([])
     }
 
     return (
-        <div>
-            <select name="" id="" onChange={handleChange} >
+        <div className="ChooseRecipient">
+            <form onSubmit={handleSubmit}>
+                <input onChange={e => setRecipientId(e.target.value)} placeholder="enter recipient's user id" type="text" name="" id="enterRecipient" />
+                <button>create</button>
+            </form>
+
+
+            {/* <select name="" id="" onChange={handleChange} >
                 <option value="">-- Choose Recipient</option>
                 {users.users.filter(user => user.id !== uid ).map( user => <option key={user.id} value={user.id}>{user.userName}</option>)}        
-            </select>    
+            </select>     */}
         </div>
         )
 }
