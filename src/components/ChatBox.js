@@ -8,6 +8,7 @@ import { db } from "../firebase";
 
 export default function ChatBox({ chatId }) {
     const [messages, setMessages] = useState([]);
+    
     useEffect(() => {
         const q = query(
           collection(db, `/messages/${chatId}/message_list`),
