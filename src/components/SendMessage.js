@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { auth, db } from "../firebase";
 import { addDoc, collection, serverTimestamp, updateDoc, doc } from "firebase/firestore";
 import './SendMessage.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons'
 
 export default function SendMessage({ chatId }) {
   const [message, setMessage] = useState("")
@@ -41,7 +43,9 @@ export default function SendMessage({ chatId }) {
         value={message}
         onChange={(e) => setMessage(e.target.value)}
       />
-        <button disabled={message ? false : true } type="submit">Send</button>
+        <button disabled={message ? false : true } type="submit" id='sendMessageBtn'>
+        <FontAwesomeIcon icon={faPaperPlane} />
+        </button>
       </form>
   )
 }

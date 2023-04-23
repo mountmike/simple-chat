@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { auth } from "../firebase";
 import { createNewChat } from "../utils/utils";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSquarePlus } from '@fortawesome/free-solid-svg-icons'
 
 export function ChooseRecipient({ setIsNewChat, setNewChatTrackker }){
     const { uid  } = auth.currentUser;
@@ -16,8 +18,8 @@ export function ChooseRecipient({ setIsNewChat, setNewChatTrackker }){
     return (
         <div className="ChooseRecipient">
             <form onSubmit={handleSubmit}>
-                <input onChange={e => setRecipientId(e.target.value)} placeholder="enter recipient's user id" type="text" name="" id="enterRecipient" />
-                <button>create</button>
+                <input onChange={e => setRecipientId(e.target.value)} placeholder="Enter recipient's user ID" type="text" name="" id="enterRecipient" />
+                <button id="newChatSubmitBtn"><FontAwesomeIcon icon={faSquarePlus} size="1x" /></button>
             </form>
 
 

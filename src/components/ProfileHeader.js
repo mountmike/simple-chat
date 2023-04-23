@@ -3,6 +3,9 @@ import { auth } from "../firebase";
 import { creatNewChat } from '../utils/utils'
 import { ChooseRecipient } from "./ChooseRecipient";
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSquarePen } from '@fortawesome/free-solid-svg-icons'
+
 export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [chooseRecipient , setChooseRecipient ] = useState(false)
@@ -21,7 +24,9 @@ export default function ProfileHeader({ setChatId , users, setIsNewChat }) {
                     <img className="display-img" src={photoURL} alt="" />
                     <h4 className="display-name">{displayName}</h4>
                 </section>
-                <button onClick={handleNewChat}>new chat</button>
+            
+                <FontAwesomeIcon id="newChatBtn" icon={faSquarePen} size="2x" onClick={handleNewChat} />
+        
                 
                 {/* {chooseRecipient?<ChooseRecipient users={users}/>:<button onClick={handleNewChat}>new chat</button>} */}
             </header>

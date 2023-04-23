@@ -18,4 +18,21 @@
     background-color: var(--grey);
     padding: 0 1%;
     margin: 10px 0;
+
+}
+
+#sendMessageBtn {
+    background-color: transparent;
+    border: 3px solid;
+    border-radius: 10px;
+    width: 4rem;
+    padding: 3px;
+    font-size: 1rem
+}
+
+#sendMessageBtn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    background-color: var(--dark);
+    color: white;
 }
