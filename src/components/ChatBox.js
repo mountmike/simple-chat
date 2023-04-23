@@ -29,7 +29,7 @@ export default function ChatBox({ chatId }) {
 
     return (
         <section className="ChatBox">
-          <MessageHeader />
+          <MessageHeader chatId={chatId} />
           <div className="messages-wrapper">
             
           {messages?.map((message) => (

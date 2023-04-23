@@ -59,15 +59,18 @@
 .chat-wrapper {
     display: flex;
     align-items: center;
+    align-items: center;
     height: 5rem;
     background-color: var(--greylight);
     border-radius: 10px;
     margin-right: 1%;
     cursor: pointer;
+    position: relative;
 }
 
 .chat-wrapper.active  {
-    background-color: white;
+    background-color: var(--pink);
+    color: white;
 }
 
 .chat-img {
@@ -102,4 +105,10 @@
     border-radius: 5px;
     border: none;
     padding: 1%;
+}
+
+.time-received-wrapper {
+    position: absolute;
+    top: 5px;
+    right: 10px;
 }

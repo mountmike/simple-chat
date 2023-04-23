@@ -20,7 +20,7 @@ export default function SendMessage({ chatId }) {
 
     const messageRef = doc(db, "messages", chatId);
     await updateDoc(messageRef, {
-      last_message: message
+      last_message: message.slice(0, 20) + "..."
     });
   
 

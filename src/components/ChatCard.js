@@ -24,7 +24,7 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
     const handleClick = (e) => {
         setChatId(conversation.id)
         setConversationList(prevList => {
-            let newArr = [...prevList].map(item => {
+            let newArr = prevList.map(item => {
                 if (item.id === conversation.id) {
                     return { id: item.id, isActive: true}
                 } else {
@@ -32,24 +32,24 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
                 }
               
             })
-            console.log(newArr);
             return newArr
         })
 
     }
 
-
+    console.log(chat);
 
     return (
         <article className={conversation.isActive ? "chat-wrapper active" : "chat-wrapper"} onClick={handleClick}>
             <img className="chat-img" src="https://placehold.co/400x400" alt="" />
             <div className="message-preview-wrapper">
-
                 <h5 className="display-name">
                     {chat ? conversationName() : "" }
                 </h5>
-
                 <span className="message-preview">{chat ? chat.last_message : "" }</span>
+            </div>
+            <div className="time-received-wrapper">
+                <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" }</time>
             </div>
         </article>
     )
