@@ -2,7 +2,7 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { createNewChat } from "../utils/utils";
 
-export function ChooseRecipient({ setIsNewChat, setConversationList }){
+export function ChooseRecipient({ setIsNewChat, setNewChatTrackker }){
     const { uid  } = auth.currentUser;
     const [recipientId, setRecipientId] = useState("")
 
@@ -11,7 +11,6 @@ export function ChooseRecipient({ setIsNewChat, setConversationList }){
         createNewChat(recipientId)
         setRecipientId("")
         setIsNewChat(false)
-        setConversationList([])
     }
 
     return (

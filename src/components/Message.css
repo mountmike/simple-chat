@@ -5,6 +5,7 @@
     background-color: var(--grey);
     width: 50%;
     display: flex;
+    justify-content: space-between;
 }
 
 .message-owner {

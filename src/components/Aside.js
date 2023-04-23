@@ -12,33 +12,42 @@ import { doc, getDoc } from "firebase/firestore";
 
 export default function Aside({ setChatId , users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
-    const [conversationList, setConversationList] = useState() // list of user conversations id
-    const [isNewChat, setIsNewChat] = useState(false)
+    const [conversationList, setConversationList] = useState([]) // list of user conversations id
+    const [isNewChat, setIsNewChat] = useState(false) // for toggling the conditional rendering of the new chat ID input
 
     
     useEffect(() => {
         const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-                setConversationList(docSnap.data().conversations)
-            } 
-            console.log(docSnap.data().conversations);
-    })
+                const conversationList = docSnap.data().conversations
+                    .map((convo, index) => {
+                        let obj = {}
+                        obj.id = convo
+                        index === 0 ? obj.isActive = true : obj.isActive = false
+                        return obj
+                    })
+            setConversationList(conversationList)}
+        })
     },[])
-
 
     
     return (
         <aside className="Aside">
             <ProfileHeader setChatId={setChatId}  users={users} setIsNewChat={setIsNewChat}/>
 
-           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} setConversationList={setConversationList} />}
+           {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} />}
 
             <section className="chat-list">
                 
-                {conversationList?.map((conversationId) => (
+                {conversationList?.map((conversation) => (
                    
-                   <ChatCard key={conversationId} conversationId={conversationId} setChatId={ setChatId } />
+                   <ChatCard 
+                   key={conversation.id} 
+                   conversation={conversation} 
+                   setChatId={setChatId} 
+                   setConversationList={setConversationList}
+                   />
                 ))}
 
             </section>

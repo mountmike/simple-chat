@@ -1,4 +1,4 @@
-import { collection, doc, addDoc, updateDoc, arrayUnion, getDoc } from "firebase/firestore";
+import { collection, doc, addDoc, updateDoc, arrayUnion, getDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
 export async function createNewChat(recipientId) {
@@ -22,8 +22,8 @@ export async function createNewChat(recipientId) {
     const docRef = await addDoc(collection(db, "messages"), {
         chat_name: "",
         group_chat: false,
-        last_message: "this is a fake value created in utils.js",
-        last_message_date: "serverTimestamp()",
+        last_message: "",
+        last_message_date: serverTimestamp(),
         members: [senderName, recipientName]
       });  
 
