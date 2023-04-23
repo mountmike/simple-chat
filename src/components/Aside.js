@@ -48,6 +48,10 @@ export default function Aside({ setChatId , users }) {
                    conversation={conversation} 
                    setChatId={setChatId} 
                    setConversationList={setConversationList}
+                   conversationId={conversation.id}
+                   uid={uid}
+                   conversationList={conversationList}
+                   setConvoList={setConversationList}
                    />
                 ))}
 

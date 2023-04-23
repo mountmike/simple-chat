@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react"
 import { db } from "../firebase";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth } from "../firebase";
 
-export default function ChatCard({ conversation, setChatId, setConversationList }) {
+export default function ChatCard({ conversation, setChatId, setConversationList , uid , conversationId ,conversationList , setConvoList}) {
     const currentName = auth.currentUser.displayName.split(" ")[0]
 
     const conversationName = () => { 
@@ -36,8 +36,23 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
         })
 
     }
+    
+    const deleteChat = () => {
+        let updatedConversationArr = conversationList.map( convo => convo.id).filter( c => c !== conversationId)
+        
+        const docRef = doc(db, "users", uid);
+        const data = {
+          conversations: updatedConversationArr
+        };
 
-    console.log(chat);
+        updateDoc(docRef, data)
+        .then(docRef => {
+            console.log("A New Document Field has been added to an existing document");
+        })
+    }
+
+    
+    
 
     return (
         <article className={conversation.isActive ? "chat-wrapper active" : "chat-wrapper"} onClick={handleClick}>
@@ -49,7 +64,8 @@ export default function ChatCard({ conversation, setChatId, setConversationList 
                 <span className="message-preview">{chat ? chat.last_message : "" }</span>
             </div>
             <div className="time-received-wrapper">
-                <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" }</time>
+                <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" } </time>
+                <button className="delete-btn" onClick={deleteChat}>Delete Chat</button>
             </div>
         </article>
     )
