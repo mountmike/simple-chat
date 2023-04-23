@@ -49,6 +49,18 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
 
     }
 
+    const deleteChat = () => {
+        let updatedConversationArr = conversationList.map( convo => convo.id).filter( c => c !== conversationId)
+        
+        const docRef = doc(db, "users", uid);
+        const data = {
+          conversations: updatedConversationArr
+        };
+
+        updateDoc(docRef, data)
+        setUpdateConvoList( prev => !prev)
+    }
+
 
 
     return (
