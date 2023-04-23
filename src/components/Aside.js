@@ -20,16 +20,17 @@ export default function Aside({ setChatId , users }) {
         const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
             if (docSnap.exists()) {
-                const conversationList = docSnap.data().conversations
+                const conversationList = docSnap.get("conversations")
                     .map((convo, index) => {
                         let obj = {}
                         obj.id = convo
-                        index === 0 ? obj.isActive = true : obj.isActive = false
+                        index === 0 ? obj.isActive = true : obj.isActive = false // setting first card in the array to be active by default
                         return obj
                     })
             setConversationList(conversationList.reverse())}
         })
     },[updateConvoList])
+
 
 
     
@@ -52,6 +53,7 @@ export default function Aside({ setChatId , users }) {
                    uid={uid}
                    conversationList={conversationList}
                    setUpdateConvoList={setUpdateConvoList}
+                   users={users}
                    />
                 ))}
 

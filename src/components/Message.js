@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./Message.css"
 import { auth, db } from "../firebase";
 import { Timestamp, deleteDoc, deleteField, doc, updateDoc } from "firebase/firestore";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
 export default function Message({ message, chatId }) {
     const { uid, displayName, photoURL } = auth.currentUser;
@@ -44,10 +46,11 @@ export default function Message({ message, chatId }) {
             </section>
             <section className="right">
                <time className="time-sent">{date}</time>
+               <button id="deleteMsgBtn"  onClick={deleteMessage} className="delete-btn" value={message.text}>
+                <FontAwesomeIcon icon={faXmark} />
+                </button>
             </section>
-            <section>
-                <button onClick={deleteMessage} className="delete-btn" value={message.text}>Delete Message</button>
-            </section>
+
         </div>
     )
 }

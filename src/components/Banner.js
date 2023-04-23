@@ -11,7 +11,7 @@ export default function Banner() {
     };
 
     const signOut = () => {
-      
+      auth.signOut();
     };
 
  
