@@ -104,11 +104,31 @@
     width: 80%;
     border-radius: 5px;
     border: none;
-    padding: 1%;
+    padding: 2%;
 }
 
 .time-received-wrapper {
     position: absolute;
     top: 5px;
     right: 10px;
+}
+
+#newChatBtn {
+    margin-right: 5px;
+}
+
+#newChatBtn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+#newChatSubmitBtn {
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+}
+
+#newChatSubmitBtn:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }
