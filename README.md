@@ -86,7 +86,9 @@ The inital version of the app created a single group chat that anyone could join
 - Updating the conversation document with metadata for every message sent so the "last_message" & "last_message_date" fields would populate and fill in the conversation cards.
 
 ## Planing Pt.3
-**feature wishlist:**
+**Coming features:**
+- ability to group chat
+- editing user profile
 - Set chat cards in `<aside>` to refresh and order based on most recent conversation when a new message is received or a new chat is created.
 - Search function in `<aside>` for filtering conversations.
 - Add notifications type functionality to make it clear when a new message is recieved.
