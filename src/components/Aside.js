@@ -32,6 +32,9 @@ export default function Aside({ setChatId , users }) {
         })
     },[updateConvoList])
 
+    if(conversationList){
+        conversationList.map( convo => console.log(convo.id))
+    }
 
 
     
