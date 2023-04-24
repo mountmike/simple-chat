@@ -7,7 +7,6 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { db } from "../firebase";
 import { doc, getDoc } from "firebase/firestore";
-import { query, collection, orderBy, onSnapshot, limit} from "firebase/firestore";
 
 
 
@@ -16,7 +15,8 @@ export default function Aside({ setChatId , users }) {
     const [conversationList, setConversationList] = useState([]) // list of user conversations id
     const [isNewChat, setIsNewChat] = useState(false) // for toggling the conditional rendering of the new chat ID input
     const [updateConvoList , setUpdateConvoList] = useState(false)
-    
+    const [ time , setTime ] = useState()
+
     useEffect(() => {
         const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
@@ -31,11 +31,22 @@ export default function Aside({ setChatId , users }) {
             setConversationList(conversationList.reverse())}
         })
     },[updateConvoList])
+    let convoList = []
 
     if(conversationList){
-        conversationList.map( convo => console.log(convo.id))
+        conversationList.map( convo => {
+            const docRef = doc(db, "messages", convo.id );
+            getDoc(docRef).then(docSnap => {
+                if (docSnap.exists()) {
+                    // let date = docSnap.data().last_message_date.toDate().toDateString().split(' ').slice(1).join(' ') + ',' + docSnap.data().last_message_date.toDate().toLocaleTimeString()
+                    convoList+= (docSnap.data().last_message_date.toDate().valueOf());
+                } 
+                })
+        })
+        //setTime(convoList)
+       
     }
-
+    // useEffect (() => console.log(time),[time])    
 
     
     return (

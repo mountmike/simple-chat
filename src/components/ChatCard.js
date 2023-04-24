@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { db } from "../firebase";
-import { doc, getDoc, updateDoc } from "firebase/firestore";
+import { Timestamp, doc, getDoc, updateDoc } from "firebase/firestore";
 import { auth } from "../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
@@ -50,7 +50,7 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
         })
 
     }
-
+    
     const deleteChat = () => {
         let updatedConversationArr = conversationList.map( convo => convo.id).filter( c => c !== conversationId)
         
@@ -62,6 +62,26 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
         updateDoc(docRef, data)
         setUpdateConvoList( prev => !prev)
     }
+    let date
+
+    //var timeStamp = new Timestamp()
+    if(chat){
+        const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        let timePast = (Timestamp.now()).toDate().getDay() - chat.last_message_date.toDate().getDay()
+        if (timePast > 6 ){
+            date = chat.last_message_date.toDate().toDateString()
+        } else if (timePast > 0 ){
+            let time = chat.last_message_date.toDate().toLocaleTimeString().split(':')
+            time.pop()
+            date = chat.last_message_date.toDate().toDateString().split(' ')[0]
+            date = /* time .join(':') + " " + */  date
+        } else {
+            date = chat.last_message_date.toDate().toLocaleTimeString().split(':')
+            date.pop()
+            date = /*'Today ' + */date.join(':')
+        }
+    }
+
 
 
 
@@ -81,7 +101,7 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
                         <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <div className="time-received-wrapper">
-                    <time className="time-sent">{chat ? Date(chat.last_message_date).toString().slice(0,3) : "" } </time>
+                    <time className="time-sent">{chat ? date : "" } </time>
                 </div>
             </div>
         </article>
