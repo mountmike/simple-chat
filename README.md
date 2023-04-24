@@ -96,3 +96,8 @@ The inital version of the app created a single group chat that anyone could join
 - managing contacts/friends list
 - sending images/emojis
 
+## Members on this project:
+
+- Simon: https://github.com/Squshedfrog
+- Mike: https://github.com/mountmike
+- Amal: https://github.com/ggsnipes
