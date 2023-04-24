@@ -22,7 +22,8 @@ export default function SendMessage({ chatId , scollToRef  }) {
 
     const messageRef = doc(db, "messages", chatId);
     await updateDoc(messageRef, {
-      last_message: message.slice(0, 20) + "..."
+      last_message: message.slice(0, 20) + "...",
+      last_message_date: serverTimestamp()
     });
     setMessage("");
     scollToRef.current.scrollIntoView()
