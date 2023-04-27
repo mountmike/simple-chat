@@ -18,6 +18,8 @@ export default function Aside({ setChatId , users }) {
     const [updateConvoList , setUpdateConvoList] = useState(false)
     const [ time , setTime ] = useState()
 
+    //  conversationList should be an array of objects with all relevant info for a chat card. To do this, in the database each conversation should be a document in a collection "conversations" stored under each user.
+
     useEffect(() => {
         const docRef = doc(db, "users", uid );
         getDoc(docRef).then(docSnap => {
@@ -31,7 +33,9 @@ export default function Aside({ setChatId , users }) {
                     })
             setConversationList(conversationList.reverse())}
         })
+        console.log("updating convo list");
     },[updateConvoList])
+    
     let convoList = []
 
     if(conversationList){

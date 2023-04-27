@@ -61,12 +61,22 @@ users: {
         email: "mike@email.com",
         name: "Mike Tharratt",
         userName: "Mike",
-        conversations: [
-            "theMegaChat",
-            "ydqoaHfLq01Wkdk1Z9eV"
-        ]
+        conversation_list: COLLECTION (see below)
     }
 }
+````
+### Conversation_list collection (nested inside each user document)
+````   
+conversation_list: {
+    CHAT_ID: {
+        avatar: "https://avatar-url.png",
+        createdAt: 23 April 2023 at 21:13:35,
+        name: "Mike",
+        uid: "Yr48LUY1a1N3M4F2JIDnVVVmrt32",
+        test: "hi everyone"
+    }
+}
+
 ````
 
 ## Planing Pt.2
