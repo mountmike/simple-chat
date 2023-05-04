@@ -65,9 +65,12 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
                 </div>
             </div>
             <div className="card-right-wrapper">
+                {conversation.id !== "theMegaChat" ?
                 <button id="deleteChatBtn" onClick={deleteChat}>
                         <FontAwesomeIcon icon={faXmark} />
                 </button>
+                :
+                null }
                 <div className="time-received-wrapper">
                     <time className="time-sent">{timestamp()}</time>
                 </div>
