@@ -1,7 +1,9 @@
 import { collection, doc, addDoc, updateDoc, arrayUnion, getDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import uuid from 'react-uuid';
 
 export async function createNewChat(recipientId) {
+    const newChatId = uuid()
     const { uid, displayName } = auth.currentUser
     let recipientName, senderName;
     const recipientRef = doc(db, "users", recipientId);
@@ -24,15 +26,17 @@ export async function createNewChat(recipientId) {
         group_chat: false,
         last_message: "",
         last_message_date: serverTimestamp(),
-        members: [senderName, recipientName]
+        members: [senderName, recipientName],
+        membersId: [uid, recipientId],
+        id: newChatId
       });  
 
     const userConversations = await doc(db, `users`, uid)
     const recipientConversations = await doc(db, `users`, recipientId)
     await updateDoc(userConversations, {
-        conversations: arrayUnion(docRef.id)
+        conversations: arrayUnion(newChatId)
     })
     await updateDoc(recipientConversations, {
-        conversations: arrayUnion(docRef.id)
+        conversations: arrayUnion(newChatId)
     })
   }
