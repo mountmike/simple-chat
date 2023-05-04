@@ -6,9 +6,9 @@ import { useEffect, useRef, useState } from "react";
 import { query, collection, orderBy, onSnapshot, limit} from "firebase/firestore";
 import { db } from "../firebase";
 
-export default function ChatBox({ chatId }) {
+export default function ChatBox({ chatId, scollToRef, users }) {
     const [messages, setMessages] = useState([]);
-    const scollToRef = useRef()
+    
 
     useEffect(() => {
         const q = query(
@@ -21,16 +21,19 @@ export default function ChatBox({ chatId }) {
           QuerySnapshot.forEach((doc) => {
             messages.push({ ...doc.data(), id: doc.id });
           });
-          setMessages(messages);
+          setMessages(messages.reverse())
         });
         return () => unsubscribe;
+        
       }, [chatId]);
     
-      //console.log("messages ", messages);
-      messages.reverse()
+    useEffect(() => {
+      scollToRef.current.scrollIntoView()
+    }, [messages])
+
     return (
         <section className="ChatBox">
-          <MessageHeader chatId={chatId} />
+          <MessageHeader chatId={chatId} users={users} />
           <div className="messages-wrapper">
             
           {messages?.map((message) => (

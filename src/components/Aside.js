@@ -11,11 +11,11 @@ import { query, collection, orderBy, onSnapshot, where } from "firebase/firestor
 
 
 
-export default function Aside({ setChatId , users }) {
+export default function Aside({ setChatId, currentChatId, users }) {
     const { uid, displayName, photoURL } = auth.currentUser;
     const [conversationList, setConversationList] = useState(null) // list of user conversations id
     const [isNewChat, setIsNewChat] = useState(false) // for toggling the conditional rendering of the new chat ID input
-    const [time, setTime] = useState()
+
 
     useEffect(() => {
         const q = query(collection(db, "messages"), where("membersId", "array-contains", uid), orderBy("last_message_date", "desc"), );
@@ -28,6 +28,7 @@ export default function Aside({ setChatId , users }) {
         });
         
     }, []);
+
     
     return (
         <aside className="Aside">
@@ -35,13 +36,14 @@ export default function Aside({ setChatId , users }) {
 
            {isNewChat && <ChooseRecipient setIsNewChat={setIsNewChat} />}
 
-            <section className="chat-list">
+            <section className="chat-list" >
                 
                 {conversationList?.map(conversation => (
                    <ChatCard 
                    key={conversation.id} 
                    conversation={conversation} 
                    setChatId={setChatId} 
+                   currentChatId={currentChatId}
                    setConversationList={setConversationList}
                    conversationList={conversationList}
                    users={users}

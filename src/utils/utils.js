@@ -1,4 +1,4 @@
-import { collection, doc, addDoc, updateDoc, arrayUnion, getDoc, serverTimestamp } from "firebase/firestore";
+import { collection, doc, setDoc, addDoc, updateDoc, arrayUnion, getDoc, serverTimestamp } from "firebase/firestore";
 import { auth, db } from "../firebase";
 import uuid from 'react-uuid';
 
@@ -21,7 +21,7 @@ export async function createNewChat(recipientId) {
       }
   })
 
-    const docRef = await addDoc(collection(db, "messages"), {
+    const docRef = await setDoc(doc(db, "messages", newChatId), {
         chat_name: "",
         group_chat: false,
         last_message: "",

@@ -20,7 +20,7 @@ export default function Banner() {
     <header className="Header">
       <div className="wrapper">
         <h3 className="heading">unsafe chat</h3>
-        <p className="tagline">a chat client with zero end to end encryption powered by a few GA students</p>
+        <p className="tagline">a chat client with zero end to end encryption made by a few GA students</p>
       </div>
       {user ? (
         <div className="header-buttons">

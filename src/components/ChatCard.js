@@ -1,26 +1,15 @@
-import { useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react"
 import { db } from "../firebase";
-import { Timestamp, doc, getDoc, updateDoc } from "firebase/firestore";
+import { doc, deleteDoc, Timestamp } from "firebase/firestore";
 import { auth } from "../firebase";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
 
-export default function ChatCard({ conversation, setChatId, setConversationList, users, conversationList , setUpdateConvoList}) {
+export default function ChatCard({ conversation, setChatId, setConversationList, users, currentChatId }) {
     const { uid } = auth.currentUser;
 
     const handleClick = (e) => {
         setChatId(conversation.id)
-        setConversationList(prevList => {
-            let newArr = prevList.map(item => {
-                if (item.id === conversation.id) {
-                    return { ...item, isActive: true}
-                } else {
-                    return { ...item, isActive: false}
-                }
-              
-            })
-            return newArr
-        })
     }
 
     const conversationName = () => { 
@@ -34,16 +23,38 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
         if (conversation.id === "theMegaChat") {
             return "/DALLE_avatar.png"
         } else if (recipientUser) {
-            console.log(recipientUser.avatar);
             return recipientUser.avatar
-            
         } else {
             return "https://placehold.co/400x400"
         }
     }
+
+    const deleteChat = async () => {
+        await deleteDoc(doc(db, 'messages', conversation.id));
+    }
+
+    const timestamp = () => {
+        // let date;
+        // const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+        // let timePast = (Timestamp.now()).toDate().getDay() - conversation.last_message_date.toDate().getDay()
+        // if (timePast > 6 ){
+        //     date = conversation.last_message_date.toDate().toDateString()
+        // } else if (timePast > 0 ){
+        //     let time = conversation.last_message_date.toDate().toLocaleTimeString().split(':')
+        //     time.pop()
+        //     date = conversation.last_message_date.toDate().toDateString().split(' ')[0]
+        //     date = /* time .join(':') + " " + */  date
+        // } else {
+        //     date = conversation.last_message_date.toDate().toLocaleTimeString().split(':')
+        //     date.pop()
+        //     date = /*'Today ' + */date.join(':')
+        // }
+        // return date
+    }
+    
     
     return (
-        <article className={conversation.isActive ? "chat-wrapper active" : "chat-wrapper"} onClick={handleClick} >
+        <article className={currentChatId === conversation.id ? "chat-wrapper active" : "chat-wrapper"} onClick={handleClick} >
             <div className="card-left-wrapper">
                 <img className="chat-img" src={conversationAvatar()} alt="" />
                 <div className="message-preview-wrapper">
@@ -54,11 +65,11 @@ export default function ChatCard({ conversation, setChatId, setConversationList,
                 </div>
             </div>
             <div className="card-right-wrapper">
-                <button id="deleteChatBtn" >
+                <button id="deleteChatBtn" onClick={deleteChat}>
                         <FontAwesomeIcon icon={faXmark} />
                 </button>
                 <div className="time-received-wrapper">
-                    <time className="time-sent">  </time>
+                    <time className="time-sent">{timestamp()}</time>
                 </div>
             </div>
         </article>
