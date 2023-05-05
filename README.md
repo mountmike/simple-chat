@@ -6,7 +6,7 @@ A basic instant messaging client powered by **React.js** & **Firebase** and crea
 
 **Read below if you're curious about the development process.**
 
-<sub>**TLDR:** *A short story about losing one's NoSQL database virginity*</sub>
+<sub>**TLDR:** *A short story about losing one's NoSQL database virginity.*</sub>
 
 # Planning process
 
@@ -107,7 +107,7 @@ At this stage our app was starting to feel more like a chat app that we were set
 - managing contacts/friends list
 - sending images/emojis
 
-## Members on this project:
+## Contributors:
 
 - Mike: https://github.com/mountmike
 - Simon: https://github.com/Squshedfrog
