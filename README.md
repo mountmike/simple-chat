@@ -1,6 +1,6 @@
 # simple chat
 
-A basic instant messaging client powered by **React.js** & **Firebase** and created with *love* by a couple of GA students.
+A clean cut instant messaging client powered by **React.js** & **Firebase** and created with *love* by a couple of GA students.
 
 [Check it out!](https://unsafe-chat.web.app/)
 
